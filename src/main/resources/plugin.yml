@@ -1,0 +1,47 @@
+name: KaiiVisible
+version: '${version}'
+main: fr.ellipsialepoulet.kaiivisible.KaiiVisible
+description: A plugin to toggle player visibility on BlueMap
+author: EllipsiaLePoulet
+folia-supported: true
+website: https://github.com/
+api-version: '1.20'
+depend:
+  - BlueMap
+
+commands:
+  visibility:
+    description: "Set player visibility on the map"
+    usage: "/visibility <player> <show | hide>"
+    aliases: [visible]
+    permission: visibility
+
+permissions:
+  visibility:
+    description: "Permission for the visibility command"
+    default: true
+  visibility.*:
+    description: "Permission for all visibility commands"
+    default: op
+    children:
+      visibility.self:
+        default: true
+        children:
+          visibility.self.show:
+            default: true
+          visibility.self.hide:
+            default: true
+          visibility.self.toggle:
+            default: true
+      visibility.others:
+        default: op
+        children:
+          visibility.others.show:
+            default: op
+          visibility.others.hide:
+            default: op
+          visibility.others.toggle:
+            default: op
+
+
+
